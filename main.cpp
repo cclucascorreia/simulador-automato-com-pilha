@@ -4,7 +4,7 @@ using namespace std;
 struct Transicao{
     string estado_origem;
     string estado_destino;
-    string simbolo_requerido; //deve ter isso no topo da pilha pra poder usar a transicao
+    string simbolo_desempilhado; //deve ter isso no topo da pilha pra poder usar a transicao
     string simbolo_lido; //simbolo q vai ser adicionado a palavra resposta
     string simbolo_empilhado; //simbolo q vai substituir o topo da pilha
 };
@@ -32,6 +32,32 @@ vector<string> extrair_conteudo(string linha){
     return conteudo;
 }
 
+Transicao extrair_transicao(string linha){
+    Transicao atual;
+        // entrada no formato (q0,@,@) = (q1,$)
+        // (inicial,simbolo lido, simbolo desempilhado) = (estado final, simbolo empilhado)
+        int pos_inicio = linha.find('(');
+        int pos_final = linha.find(',');
+        atual.estado_origem = linha.substr(pos_inicio + 1, pos_final - pos_inicio - 1);
+
+        pos_inicio = pos_final;
+        pos_final = linha.find(',', pos_final + 1);
+        atual.simbolo_lido = linha.substr(pos_inicio + 1, pos_final - pos_inicio - 1);
+
+        pos_inicio = pos_final;
+        pos_final = linha.find(')', pos_final + 1);
+        atual.simbolo_desempilhado = linha.substr(pos_inicio + 1, pos_final - pos_inicio - 1);
+
+        pos_inicio = linha.find('(', pos_final + 1);
+        pos_final = linha.find(',', pos_inicio + 1);
+        atual.estado_destino = linha.substr(pos_inicio + 1, pos_final - pos_inicio - 1);
+
+        pos_inicio = pos_final;
+        pos_final = linha.find(')', pos_inicio + 1);
+        atual.simbolo_empilhado = linha.substr(pos_inicio + 1, pos_final - pos_inicio - 1);
+    return atual;
+}
+
 void lerArquivo(string nome, Automato& automato){
     ifstream arquivo(nome); //abre o arquivo
     if(!arquivo.is_open()){
@@ -51,9 +77,7 @@ void lerArquivo(string nome, Automato& automato){
         } else if (l==4){
             automato.alfabeto_pilha = extrair_conteudo(linha);
         } else {
-            vector<string> trans = extrair_conteudo(linha);
-            Transicao Atual;
-            
+            automato.transicoes.push_back(extrair_transicao(linha));
         }
         l++;
     }
@@ -73,5 +97,12 @@ int main(){
     cout << "alfabeto da fita: "; for(auto x:automato.alfabeto_fita) cout << x << " "; cout << endl;
     cout << "alfabeto da pilha: "; for(auto x:automato.alfabeto_pilha) cout << x << " "; cout << endl;
 
+    cout << "TRANSICOES LIDAS:" << endl;
+    int i=1;
+    for(auto x:automato.transicoes){
+        cout << "transicao " << i << ": " << x.estado_origem << " -> " << x.estado_destino
+        << " // le: " << x.simbolo_lido << ", empilha: " << x.simbolo_empilhado << ", desempilha: " << x.simbolo_desempilhado << endl;
+        i++;
+    }
     return 0;
 }
