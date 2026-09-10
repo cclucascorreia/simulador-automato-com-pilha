@@ -53,6 +53,7 @@ void lerArquivo(string nome, Automato& automato){
         } else {
             vector<string> trans = extrair_conteudo(linha);
             Transicao Atual;
+            
         }
         l++;
     }
