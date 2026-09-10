@@ -51,8 +51,8 @@ void lerArquivo(string nome, Automato& automato){
         } else if (l==4){
             automato.alfabeto_pilha = extrair_conteudo(linha);
         } else {
-            Transicao atual;
-            
+            string nova_linha = extrair_conteudo(linha);
+            Transicao Atual;
         }
         l++;
     }
