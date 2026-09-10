@@ -15,7 +15,7 @@ struct Automato{
     vector<string> estados_finais;
     vector<string> alfabeto_fita; //letras q podem ser usadas na fita
     vector<string> alfabeto_pilha; //letras q podem ser empilhadas
-    vector<Transicao> transicoes;
+    vector<Transicao> transicoes; //armazena structs de transicao
 };
 
 vector<string> extrair_conteudo(string linha){
