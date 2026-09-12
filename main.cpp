@@ -6,7 +6,7 @@ struct Transicao{
     string estado_destino;
     string simbolo_desempilhado; //deve ter isso no topo da pilha pra poder usar a transicao
     string simbolo_lido; //simbolo q vai ser adicionado a palavra resposta
-    string simbolo_empilhado; //simbolo q vai substituir o topo da pilha
+    string simbolo_empilhado; //simbolo q vai ser empilhado/substituir no topo da pilha
 };
 
 struct Automato{
