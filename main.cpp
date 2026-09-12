@@ -58,7 +58,7 @@ Transicao extrair_transicao(string linha){
     return atual;
 }
 
-void lerArquivo(string nome, Automato& automato){
+void ler_arquivo_automato(string nome, Automato& automato){
     ifstream arquivo(nome); //abre o arquivo
     if(!arquivo.is_open()){
         cout << "ERRO: o arquivo nao foi aberto." << endl;
@@ -83,15 +83,46 @@ void lerArquivo(string nome, Automato& automato){
     }
 }
 
+void ler_arquivo_cadeia(){ //funcao p ler a entrada a ser testada
+
+}
+
+bool procurar_transicao(){ //procura uma transicao aceitavel dado o automato atual
+
+}
+
+void topo_pilha(){ //funcao p retornar o topo da pilha
+
+}
+
+/*
+1. ler_arquivo_cadeia()
+2. comeca o automato em q0
+2. loop infinito:
+    1. topo_pilha()
+    2. procurar_transicao()
+        1. letra atual, topo da pilha ok
+        2. le @, topo da pilha ok
+        3. letra atual, topo @
+        4. le @, topo @
+    3. se achou transicao aceitavel, aplicar e atualizar o automato
+    4. se nao achou, quebrar loop
+5. fora do loop:
+    1. verificar se a palavra ta inteira
+    2. verificar se ta em um estado final
+    3. verificar se a pilha ta vazia
+    4. se tudo der certo, a cadeia eh aceita, se n, rejeitada
+*/
+
 int main(){
     string nome;
     cout << "Digite o nome do arquivo .txt: "; //tem q digitar o .txt no fim
     cin >> nome;
 
     Automato automato;
-    lerArquivo(nome, automato);
+    ler_arquivo_automato(nome, automato);
 
-    cout << "INFORMACOES LIDAS:" << endl;
+    cout << "AUTOMATO LIDO:" << endl;
     cout << "qtd de estados: " << automato.n << endl;
     cout << "estados finais aceitos: "; for(auto x:automato.estados_finais) cout << x << " "; cout << endl;
     cout << "alfabeto da fita: "; for(auto x:automato.alfabeto_fita) cout << x << " "; cout << endl;
@@ -104,5 +135,7 @@ int main(){
         << " // le: " << x.simbolo_lido << ", empilha: " << x.simbolo_empilhado << ", desempilha: " << x.simbolo_desempilhado << endl;
         i++;
     }
+
+
     return 0;
 }
