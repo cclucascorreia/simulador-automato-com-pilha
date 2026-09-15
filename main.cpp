@@ -113,16 +113,6 @@ void ler_arquivo_cadeia(string nome){ //funcao p ler a entrada a ser testada, po
     }
 }
 
-/*
-1. ler_arquivo_cadeia()
-2. enquanto estiver lendo cadeias:
-    1. procurar transicao
-    2. se existir, aplicar
-    3. se nao existir, retornar falso
-
-
-*/
-
 int main(){
     string nome;
     cout << "Digite o nome do arquivo .txt: "; //tem q digitar o .txt no fim
