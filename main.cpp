@@ -24,7 +24,7 @@ struct Simulacao{ //com base no Automato lido, vai guardar essas informacoes dur
     vector<string> pilha; //pilha atual
 };
 
-//------------ LEITURA DO AUTOMATO --------------//
+//------------ LEITURA --------------//
 vector<string> extrair_conteudo(string linha){ //le cada linha do arquivo do automato e atualiza ele com suas informacoes
     vector<string> conteudo; //vetor resposta
     int pos_inicio = linha.find('{');
@@ -92,37 +92,40 @@ void ler_arquivo_automato(string nome, Automato& automato){
 
 //------------ EXECUCAO --------------//
 void topo_pilha(){ //funcao p retornar o topo da pilha
-    //dado um automato, retornar o ultimo elemento do automato.pilha
+    //dado uma simulacao, retornar a string no final do vetor simulacao.pilha
 }
 
-bool procurar_transicao(string cadeia, Automato automato){ //procura uma transicao aceitavel //true: achou e aplicou a transicao //false: flopou
+bool procurar_transicao(string cadeia, Automato automato, Simulacao simulacao){ //procura uma transicao aceitavel //true: achou e aplicou a transicao //false: flopou
     //dado o automato atual, procurar no vetor de transicoes por alguma que:
-    //comece em estado_inicial;
-    //leia cadeia[automato.posicao_cadeia];
+    //esteja em estado_atual;
+    //leia cadeia[simulacao.posicao_cadeia];
     //desempilhe nada OU topo_pilha();
     //se achou, aplicar a transicao, retornando true
     //se n achou, retornar false p indicar a rejeicao da cadeia
+    return false;
 }
 
 void verificar_aceitacao(){ //verifica se a cadeia esta completa, a pilha esta vazia e o estado atual eh estado final
-
+    //simulacao.palavra == cadeia
+    //simulacao.estado_atual tem q estar em automato.transicoes
+    //simulacao.pilha deve estar vazia
 }
 
-void ler_arquivo_cadeia(string nome, Automato& automato){ //funcao p ler a entrada a ser testada, pode ter varias linhas
+void ler_arquivo_cadeia(string nome, Automato& automato){ //funcao p ler a entrada a ser testada, podendo ser varias linhas
     string cadeia;
-    ifstream arquivo(nome); //abre o arquivo
+    ifstream arquivo(nome);
         if(!arquivo.is_open()){
         cout << "ERRO: o arquivo nao foi aberto." << endl;
         return;
     }
-    string cadeia;
     while(getline(arquivo, cadeia)){
+        Simulacao simulacao;
         while(true){ //roda infinito ate n ter transicoes aceitaveis
-            if(!(procurar_transicao(cadeia, automato))){
+            if(!(procurar_transicao(cadeia, automato, simulacao))){
                 break;
             }
         }
-        verificar_aceitacao();
+        verificar_aceitacao(); // printa a resposta pra cada cadeia
     }
 }
 
