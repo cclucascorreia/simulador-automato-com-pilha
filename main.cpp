@@ -11,15 +11,17 @@ struct Transicao{
 
 struct Automato{
     int n; //numero de estados
-    string estado_inicial;
     vector<string> estados_finais;
     vector<string> alfabeto_fita; //letras q podem ser usadas na fita
     vector<string> alfabeto_pilha; //letras q podem ser empilhadas
     vector<Transicao> transicoes; //armazena structs de transicao
+};
 
-    string palavra; //palavra sendo lida atualmente, objetivo eh ficar igual a cadeia
-    int posicao_cadeia=0; //marca a posicao atual na cadeia sendo lida
-    vector<string> pilha; //pilha do automato atual
+struct Simulacao{ //com base no Automato lido, vai guardar essas informacoes durante a leitura de uma cadeia
+    string estado_atual = "q0";
+    string palavra; //palavra atual, o objetivo eh deixar igual a cadeia
+    int posicao_cadeia; //guarda o indice atual em q estamos na cadeia
+    vector<string> pilha; //pilha atual
 };
 
 vector<string> extrair_conteudo(string linha){
