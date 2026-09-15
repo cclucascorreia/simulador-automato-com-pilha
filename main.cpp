@@ -16,8 +16,10 @@ struct Automato{
     vector<string> alfabeto_fita; //letras q podem ser usadas na fita
     vector<string> alfabeto_pilha; //letras q podem ser empilhadas
     vector<Transicao> transicoes; //armazena structs de transicao
+
     string palavra; //palavra sendo lida atualmente, objetivo eh ficar igual a cadeia
     int posicao_cadeia=0; //marca a posicao atual na cadeia sendo lida
+    vector<string> pilha; //pilha do automato atual
 };
 
 vector<string> extrair_conteudo(string linha){
@@ -86,11 +88,16 @@ void ler_arquivo_automato(string nome, Automato& automato){
 }
 
 void topo_pilha(){ //funcao p retornar o topo da pilha
-
+    //dado um automato, retornar o ultimo elemento do automato.pilha
 }
 
-bool procurar_transicao(string cadeia, Automato automato){ //procura uma transicao aceitavel dado o automato atual //true: achou e aplicou a transicao //false: flopou
-
+bool procurar_transicao(string cadeia, Automato automato){ //procura uma transicao aceitavel //true: achou e aplicou a transicao //false: flopou
+    //dado o automato atual, procurar no vetor de transicoes por alguma que:
+    //comece em estado_inicial;
+    //leia cadeia[automato.posicao_cadeia];
+    //desempilhe nada OU topo_pilha();
+    //se achou, aplicar a transicao p/ proximo loop, retornando true
+    //se n achou, retornar false p indicar a rejeicao da cadeia
 }
 
 void verificar_aceitacao(){ //verifica se a cadeia esta completa, a pilha esta vazia e o estado atual eh estado final
