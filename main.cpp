@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+//------------ STRUCTS --------------//
 struct Transicao{
     string estado_origem;
     string estado_destino;
@@ -20,11 +20,12 @@ struct Automato{
 struct Simulacao{ //com base no Automato lido, vai guardar essas informacoes durante a leitura de uma cadeia
     string estado_atual = "q0";
     string palavra; //palavra atual, o objetivo eh deixar igual a cadeia
-    int posicao_cadeia; //guarda o indice atual em q estamos na cadeia
+    int posicao_cadeia=0; //guarda o indice atual em q estamos na cadeia
     vector<string> pilha; //pilha atual
 };
 
-vector<string> extrair_conteudo(string linha){
+//------------ LEITURA DO AUTOMATO --------------//
+vector<string> extrair_conteudo(string linha){ //le cada linha do arquivo do automato e atualiza ele com suas informacoes
     vector<string> conteudo; //vetor resposta
     int pos_inicio = linha.find('{');
     int pos_final = linha.find('}');
@@ -38,7 +39,7 @@ vector<string> extrair_conteudo(string linha){
     return conteudo;
 }
 
-Transicao extrair_transicao(string linha){
+Transicao extrair_transicao(string linha){ //le do arquivo do automato as transicoes 
     Transicao atual;
         // entrada no formato (q0,@,@) = (q1,$)
         // (inicial,simbolo lido, simbolo desempilhado) = (estado final, simbolo empilhado)
@@ -89,6 +90,7 @@ void ler_arquivo_automato(string nome, Automato& automato){
     }
 }
 
+//------------ EXECUCAO --------------//
 void topo_pilha(){ //funcao p retornar o topo da pilha
     //dado um automato, retornar o ultimo elemento do automato.pilha
 }
@@ -124,6 +126,7 @@ void ler_arquivo_cadeia(string nome, Automato& automato){ //funcao p ler a entra
     }
 }
 
+//------------ MAIN --------------//
 int main(){
     string nome;
     cout << "Digite o nome do arquivo .txt: "; //tem q digitar o .txt no fim
