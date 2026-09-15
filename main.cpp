@@ -4,8 +4,8 @@ using namespace std;
 struct Transicao{
     string estado_origem;
     string estado_destino;
-    string simbolo_desempilhado; //deve ter isso no topo da pilha pra poder usar a transicao
-    string simbolo_lido; //simbolo q vai ser adicionado a palavra resposta
+    char simbolo_desempilhado; //deve ter isso no topo da pilha pra poder usar a transicao
+    char simbolo_lido; //simbolo q vai ser adicionado a palavra resposta
     string simbolo_empilhado; //simbolo q vai ser empilhado/substituir no topo da pilha
 };
 
@@ -19,9 +19,9 @@ struct Automato{
 
 struct Simulacao{ //com base no Automato lido, vai guardar essas informacoes durante a leitura de uma cadeia
     string estado_atual = "q0";
-    string palavra; //palavra atual, o objetivo eh deixar igual a cadeia
+    string palavra = ""; //palavra atual, o objetivo eh deixar igual a cadeia
     int posicao_cadeia=0; //guarda o indice atual em q estamos na cadeia
-    vector<string> pilha; //pilha atual
+    vector<string> pilha; //pilha atual, inicia vazia
 };
 
 //------------ LEITURA --------------//
@@ -91,7 +91,7 @@ void ler_arquivo_automato(string nome, Automato& automato){
 }
 
 //------------ EXECUCAO --------------//
-void topo_pilha(){ //funcao p retornar o topo da pilha
+char topo_pilha(){ //funcao p retornar o topo da pilha
     //dado uma simulacao, retornar a string no final do vetor simulacao.pilha
 }
 
@@ -102,7 +102,15 @@ bool procurar_transicao(string cadeia, Automato automato, Simulacao simulacao){ 
     //desempilhe nada OU topo_pilha();
     //se achou, aplicar a transicao, retornando true
     //se n achou, retornar false p indicar a rejeicao da cadeia
-    return false;
+    bool resultado = false;
+    for(auto x:automato.transicoes){ //verificar cada Transicao valida pro automato
+        if((x.estado_origem == simulacao.estado_atual) && (x.simbolo_lido == cadeia[simulacao.posicao_cadeia]) && (x.simbolo_desempilhado == topo_pilha())){
+            //aplicar a transicao
+            //adicionar o caso de empilhar/desempilhar/ler a palavra vazia
+            resultado = true;
+        }
+    }
+    return resultado;
 }
 
 void verificar_aceitacao(){ //verifica se a cadeia esta completa, a pilha esta vazia e o estado atual eh estado final
