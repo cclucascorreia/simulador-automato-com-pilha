@@ -104,27 +104,22 @@ void ler_arquivo_cadeia(string nome){ //funcao p ler a entrada a ser testada, po
     }
     string cadeia;
     while(getline(arquivo, cadeia)){
-        if(!(procurar_transicao())){
-            //se nao achou transicao, tem 2 cenarios:
-            //1. cadeia nao acabou -> cadeia rejeitada
-            //2. cadeia acabou -> verificar aceitacao
-            verificar_aceitacao();
+        while(true){ //roda infinito ate n ter transicoes aceitaveis
+            if(!(procurar_transicao())){
+                break;
+            }
         }
+        verificar_aceitacao();
     }
 }
 
 /*
 1. ler_arquivo_cadeia()
-2. comeca o automato em q0
-2. loop infinito:
-    1. topo_pilha()
-    2. procurar_transicao()
-        1. letra atual, topo da pilha ok
-        2. le @, topo da pilha ok
-        3. letra atual, topo @
-        4. le @, topo @
-    3. se achou transicao aceitavel, aplicar e atualizar o automato
-    4. se nao achou, quebrar loop
+2. enquanto estiver lendo cadeias:
+    1. procurar transicao
+    2. se existir, aplicar
+    3. se nao existir, retornar falso
+
 
 */
 
