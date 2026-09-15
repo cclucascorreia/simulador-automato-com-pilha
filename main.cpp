@@ -83,16 +83,34 @@ void ler_arquivo_automato(string nome, Automato& automato){
     }
 }
 
-void ler_arquivo_cadeia(){ //funcao p ler a entrada a ser testada
-
-}
-
-bool procurar_transicao(){ //procura uma transicao aceitavel dado o automato atual
+bool procurar_transicao(){ //procura uma transicao aceitavel dado o automato atual //true: achou e aplicou a transicao //false: flopou
 
 }
 
 void topo_pilha(){ //funcao p retornar o topo da pilha
 
+}
+
+void verificar_aceitacao(){ //verifica se a cadeia esta completa, a pilha esta vazia e o estado atual eh estado final
+
+}
+
+void ler_arquivo_cadeia(string nome){ //funcao p ler a entrada a ser testada, pode ter varias linhas
+    string cadeia;
+    ifstream arquivo(nome); //abre o arquivo
+        if(!arquivo.is_open()){
+        cout << "ERRO: o arquivo nao foi aberto." << endl;
+        return;
+    }
+    string cadeia;
+    while(getline(arquivo, cadeia)){
+        if(!(procurar_transicao())){
+            //se nao achou transicao, tem 2 cenarios:
+            //1. cadeia nao acabou -> cadeia rejeitada
+            //2. cadeia acabou -> verificar aceitacao
+            verificar_aceitacao();
+        }
+    }
 }
 
 /*
@@ -107,11 +125,7 @@ void topo_pilha(){ //funcao p retornar o topo da pilha
         4. le @, topo @
     3. se achou transicao aceitavel, aplicar e atualizar o automato
     4. se nao achou, quebrar loop
-5. fora do loop:
-    1. verificar se a palavra ta inteira
-    2. verificar se ta em um estado final
-    3. verificar se a pilha ta vazia
-    4. se tudo der certo, a cadeia eh aceita, se n, rejeitada
+
 */
 
 int main(){
