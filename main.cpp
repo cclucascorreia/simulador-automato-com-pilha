@@ -96,7 +96,7 @@ bool procurar_transicao(string cadeia, Automato automato){ //procura uma transic
     //comece em estado_inicial;
     //leia cadeia[automato.posicao_cadeia];
     //desempilhe nada OU topo_pilha();
-    //se achou, aplicar a transicao p/ proximo loop, retornando true
+    //se achou, aplicar a transicao, retornando true
     //se n achou, retornar false p indicar a rejeicao da cadeia
 }
 
