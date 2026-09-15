@@ -16,6 +16,8 @@ struct Automato{
     vector<string> alfabeto_fita; //letras q podem ser usadas na fita
     vector<string> alfabeto_pilha; //letras q podem ser empilhadas
     vector<Transicao> transicoes; //armazena structs de transicao
+    string palavra; //palavra sendo lida atualmente, objetivo eh ficar igual a cadeia
+    int posicao_cadeia=0; //marca a posicao atual na cadeia sendo lida
 };
 
 vector<string> extrair_conteudo(string linha){
@@ -87,7 +89,7 @@ void topo_pilha(){ //funcao p retornar o topo da pilha
 
 }
 
-bool procurar_transicao(){ //procura uma transicao aceitavel dado o automato atual //true: achou e aplicou a transicao //false: flopou
+bool procurar_transicao(string cadeia, Automato automato){ //procura uma transicao aceitavel dado o automato atual //true: achou e aplicou a transicao //false: flopou
 
 }
 
@@ -95,7 +97,7 @@ void verificar_aceitacao(){ //verifica se a cadeia esta completa, a pilha esta v
 
 }
 
-void ler_arquivo_cadeia(string nome){ //funcao p ler a entrada a ser testada, pode ter varias linhas
+void ler_arquivo_cadeia(string nome, Automato& automato){ //funcao p ler a entrada a ser testada, pode ter varias linhas
     string cadeia;
     ifstream arquivo(nome); //abre o arquivo
         if(!arquivo.is_open()){
@@ -105,7 +107,7 @@ void ler_arquivo_cadeia(string nome){ //funcao p ler a entrada a ser testada, po
     string cadeia;
     while(getline(arquivo, cadeia)){
         while(true){ //roda infinito ate n ter transicoes aceitaveis
-            if(!(procurar_transicao())){
+            if(!(procurar_transicao(cadeia, automato))){
                 break;
             }
         }
