@@ -4,8 +4,8 @@ using namespace std;
 struct Transicao{
     string estado_origem;
     string estado_destino;
-    char simbolo_desempilhado; //deve ter isso no topo da pilha pra poder usar a transicao
-    char simbolo_lido; //simbolo q vai ser adicionado a palavra resposta
+    string simbolo_desempilhado; //deve ter isso no topo da pilha pra poder usar a transicao
+    string simbolo_lido; //simbolo q vai ser adicionado a palavra resposta
     string simbolo_empilhado; //simbolo q vai ser empilhado/substituir no topo da pilha
 };
 
@@ -104,11 +104,12 @@ bool procurar_transicao(string cadeia, Automato automato, Simulacao simulacao){ 
     //se n achou, retornar false p indicar a rejeicao da cadeia
     bool resultado = false;
     for(auto x:automato.transicoes){ //verificar cada Transicao valida pro automato
-        if((x.estado_origem == simulacao.estado_atual) && (x.simbolo_lido == cadeia[simulacao.posicao_cadeia]) && (x.simbolo_desempilhado == topo_pilha())){
+        //if((x.estado_origem == simulacao.estado_atual) && (x.simbolo_lido == cadeia[simulacao.posicao_cadeia]) && (x.simbolo_desempilhado == topo_pilha())){
             //aplicar a transicao
             //adicionar o caso de empilhar/desempilhar/ler a palavra vazia
+            //conflito entre string e char, verificar/atualizar as funcoes e as structs OU usar funcao tochar aqui
             resultado = true;
-        }
+        //}
     }
     return resultado;
 }
