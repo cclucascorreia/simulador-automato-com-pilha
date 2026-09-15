@@ -83,11 +83,11 @@ void ler_arquivo_automato(string nome, Automato& automato){
     }
 }
 
-bool procurar_transicao(){ //procura uma transicao aceitavel dado o automato atual //true: achou e aplicou a transicao //false: flopou
+void topo_pilha(){ //funcao p retornar o topo da pilha
 
 }
 
-void topo_pilha(){ //funcao p retornar o topo da pilha
+bool procurar_transicao(){ //procura uma transicao aceitavel dado o automato atual //true: achou e aplicou a transicao //false: flopou
 
 }
 
