@@ -1,2 +1,0 @@
-# trabalho_lfa
-:-(
