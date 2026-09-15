@@ -1,5 +1,2 @@
 # trabalho_lfa
-STRUCTS: ok
-LEITURA: ok
-EXECUCAO: fazendo
-MAIN: fazendo
+STRUCTS: ok // LEITURA: ok // EXECUCAO: fazendo // MAIN: fazendo
