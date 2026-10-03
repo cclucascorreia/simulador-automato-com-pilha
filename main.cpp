@@ -141,7 +141,7 @@ void ler_arquivo_cadeia(string nome, Automato& automato){ //funcao p ler a entra
 //------------ MAIN --------------//
 int main(){
     string nome;
-    cout << "Digite o nome do arquivo .txt: "; //tem q digitar o .txt no fim
+    cout << "Digite o nome do arquivo .txt: "; //tem q digitar a extensao .txt no fim
     cin >> nome;
 
     Automato automato;
