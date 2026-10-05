@@ -147,6 +147,18 @@ void verificar_aceitacao(Simulacao& simulacao, Automato automato, string& cadeia
     aceita ? cout << "ACEITA\n" : cout << "REJEITADA\n";
 }
 
+void imprimir_passo(Simulacao& simulacao, string& cadeia){ //tem q ser chamada antes e dps da execucao do automato
+    cout << "fita: ";
+    cout << simulacao.palavra;
+    cout << "[" << simulacao.estado_atual << "]";
+    cout << cadeia.substr(simulacao.posicao_cadeia); //imprime apenas a parte da cadeia q ainda nao foi lida
+    cout << " pilha: ";
+    for(int i = simulacao.pilha.size() -1; i >= 0; i--){ //ja q eh uma pilha, imprime de tras pra frente
+        cout << simulacao.pilha[i];
+    }
+    cout << endl;
+}
+
 void ler_arquivo_cadeia(string nome, Automato& automato){ //funcao p ler a entrada a ser testada, podendo ser varias linhas
     string cadeia;
     ifstream arquivo(nome);
@@ -157,11 +169,13 @@ void ler_arquivo_cadeia(string nome, Automato& automato){ //funcao p ler a entra
     while(getline(arquivo, cadeia)){
         Simulacao simulacao;
         Transicao transicao;
+        imprimir_passo(simulacao, cadeia);
         while(true){ //roda infinito ate n ter transicoes aceitaveis
             if(!(procurar_transicao(cadeia, automato, simulacao, transicao))){
                 break;
             } else {
                 aplicar_transicao(simulacao, transicao);
+                imprimir_passo(simulacao, cadeia);
             }
         }
         verificar_aceitacao(simulacao, automato, cadeia); // printa a resposta pra cada cadeia
