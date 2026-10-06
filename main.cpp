@@ -190,21 +190,7 @@ int main(){
 
     Automato automato;
     ler_arquivo_automato(nome, automato);
-
-    cout << "AUTOMATO LIDO:" << endl;
-    cout << "qtd de estados: " << automato.n << endl;
-    cout << "estados finais aceitos: "; for(auto x:automato.estados_finais) cout << x << " "; cout << endl;
-    cout << "alfabeto da fita: "; for(auto x:automato.alfabeto_fita) cout << x << " "; cout << endl;
-    cout << "alfabeto da pilha: "; for(auto x:automato.alfabeto_pilha) cout << x << " "; cout << endl;
-
-    cout << "TRANSICOES LIDAS:" << endl;
-    int i=1;
-    for(auto x:automato.transicoes){
-        cout << "transicao " << i << ": " << x.estado_origem << " -> " << x.estado_destino
-        << " // le: " << x.simbolo_lido << ", empilha: " << x.simbolo_empilhado << ", desempilha: " << x.simbolo_desempilhado << endl;
-        i++;
-    }
-
+ 
     cout << "Digite o nome do arquivo .txt com as cadeias a serem testadas: ";
     string nomecadeia; cin>> nomecadeia;
     ler_arquivo_cadeia(nomecadeia, automato);
