@@ -185,7 +185,7 @@ void ler_arquivo_cadeia(string nome, Automato& automato){ //funcao p ler a entra
 //------------ MAIN --------------//
 int main(){
     string nome;
-    cout << "Digite o nome do arquivo .txt: "; //tem q digitar a extensao .txt no fim
+    cout << "Digite o nome do arquivo .txt com as informacoes do automato: "; //tem q digitar a extensao .txt no fim
     cin >> nome;
 
     Automato automato;
@@ -205,6 +205,9 @@ int main(){
         i++;
     }
 
+    cout << "Digite o nome do arquivo .txt com as cadeias a serem testadas: ";
+    string nomecadeia; cin>> nomecadeia;
+    ler_arquivo_cadeia(nomecadeia, automato);
 
     return 0;
 }
