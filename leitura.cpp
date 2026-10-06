@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//------------ STRUCTS --------------//
 struct Transicao{
     string estado_origem;
     string estado_destino;
@@ -25,7 +24,6 @@ struct Simulacao{ //com base no Automato lido, vai guardar essas informacoes dur
     vector<string> pilha; //pilha atual, inicia vazia
 };
 
-//------------ LEITURA --------------//
 vector<string> extrair_conteudo(string linha){ //le cada linha do arquivo do automato e atualiza ele com suas informacoes
     vector<string> conteudo; //vetor resposta
     int pos_inicio = linha.find('{');
