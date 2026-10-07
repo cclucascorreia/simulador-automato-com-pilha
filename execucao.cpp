@@ -61,12 +61,11 @@ void imprimir_passo(Simulacao& simulacao, string& cadeia){
 void ler_arquivo_cadeia(string nome, Automato& automato){
     string cadeia;
     ifstream arquivo(nome);
-        while(!arquivo.is_open()){
+    while(!arquivo.is_open()){
         cout << "ERRO: o arquivo nao foi aberto." << endl;
         cout << "Digite o nome do arquivo .txt com as cadeias a serem testadas: ";
         cin>> nome;
-        ler_arquivo_cadeia(nome, automato);
-        return;
+        arquivo.open(nome);
     }
     while(getline(arquivo, cadeia)){
         Simulacao simulacao;

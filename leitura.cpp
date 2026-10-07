@@ -44,8 +44,7 @@ void ler_arquivo_automato(string nome, Automato& automato){
         cout << "ERRO: o arquivo nao foi aberto." << endl;
         cout << "Digite o nome do arquivo .txt com as informacoes do automato: ";
         cin >> nome;
-        ler_arquivo_automato(nome, automato);
-        return;
+        arquivo.open(nome);
     }
     string linha;
     int l=1;
