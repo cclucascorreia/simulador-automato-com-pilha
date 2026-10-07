@@ -1,23 +1,21 @@
 #include "leitura.h"
 
-vector<string> extrair_conteudo(string linha){ //le cada linha do arquivo do automato e atualiza ele com suas informacoes
-    vector<string> conteudo; //vetor resposta
+vector<string> extrair_conteudo(string linha){
+    vector<string> conteudo;
     int pos_inicio = linha.find('{');
     int pos_final = linha.find('}');
-    string linha_util = linha.substr(pos_inicio + 1, pos_final - pos_inicio - 1); //cria uma substring so com oq ta entre { } da string, excluindo eles
+    string linha_util = linha.substr(pos_inicio + 1, pos_final - pos_inicio - 1);
 
-    stringstream ss(linha_util); //comeca a ler uma string tipo ifstream
+    stringstream ss(linha_util);
     string parte;
-    while(getline(ss, parte, ',')){ //le cada parte da string, dividindo pelas virgulas, e poe no vetor resposta
+    while(getline(ss, parte, ',')){
         conteudo.push_back(parte);
     }
     return conteudo;
 }
 
-Transicao extrair_transicao(string linha){ //le do arquivo do automato as transicoes 
+Transicao extrair_transicao(string linha){
     Transicao atual;
-        // entrada no formato (q0,@,@) = (q1,$)
-        // (inicial,simbolo lido, simbolo desempilhado) = (estado final, simbolo empilhado)
         int pos_inicio = linha.find('(');
         int pos_final = linha.find(',');
         atual.estado_origem = linha.substr(pos_inicio + 1, pos_final - pos_inicio - 1);
@@ -41,17 +39,17 @@ Transicao extrair_transicao(string linha){ //le do arquivo do automato as transi
 }
 
 void ler_arquivo_automato(string nome, Automato& automato){
-    ifstream arquivo(nome); //abre o arquivo
+    ifstream arquivo(nome);
     if(!arquivo.is_open()){
         cout << "ERRO: o arquivo nao foi aberto." << endl;
         return;
     }
     string linha;
-    int l=1; //conta qual linha vai ser lida
-    while(getline(arquivo, linha)){ //loop ate parar de ler
+    int l=1;
+    while(getline(arquivo, linha)){
         if(l==1){
-            int pos = linha.find('='); //pos armazena a posicao do =
-            automato.n = stoi(linha.substr(pos+1)); //stoi transforma uma string em int; faz isso com a substring q ta depois do =
+            int pos = linha.find('=');
+            automato.n = stoi(linha.substr(pos+1));
         } else if (l==2){
             automato.estados_finais = extrair_conteudo(linha);
         } else if (l==3){

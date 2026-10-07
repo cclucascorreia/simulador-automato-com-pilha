@@ -1,6 +1,6 @@
 #include "execucao.h"
 
-string topo_pilha(Simulacao& simulacao){ //funcao p retornar o topo da pilha //passa por referencia pra n criar copia desnecessaria
+string topo_pilha(Simulacao& simulacao){
     if(simulacao.pilha.empty()){
         return "@";
     }
@@ -11,25 +11,19 @@ void aplicar_transicao(Simulacao& simulacao, Transicao& transicao){
     simulacao.estado_atual = transicao.estado_destino;
     if(transicao.simbolo_lido != "@"){
         simulacao.palavra += transicao.simbolo_lido;
-        simulacao.posicao_cadeia++; //leu com sucesso ent avanca 1
+        simulacao.posicao_cadeia++;
     }
     if(transicao.simbolo_desempilhado != "@"){
         simulacao.pilha.pop_back();
     }
     if(transicao.simbolo_empilhado != "@"){
         for(auto x: transicao.simbolo_empilhado){
-            simulacao.pilha.push_back(string(1, x)); //empilha simbolos (YY..)
+            simulacao.pilha.push_back(string(1, x));
         }
     }
 }
 
-bool procurar_transicao(string cadeia, Automato& automato, Simulacao simulacao, Transicao& transicao){ //procura uma transicao aceitavel //true: achou e aplicou a transicao //false: flopou
-    //dado o automato atual, procurar no vetor de transicoes por alguma que:
-    //esteja em estado_atual;
-    //leia cadeia[simulacao.posicao_cadeia];
-    //desempilhe nada OU topo_pilha();
-    //se achou, aplicar a transicao, retornando true
-    //se n achou, retornar false p indicar a rejeicao da cadeia
+bool procurar_transicao(string cadeia, Automato& automato, Simulacao simulacao, Transicao& transicao){
     string letra_atual = (simulacao.posicao_cadeia < cadeia.size()) ? string(1, cadeia[simulacao.posicao_cadeia]) : "@";
     string topo = topo_pilha(simulacao);
     for(auto x : automato.transicoes){
@@ -44,31 +38,27 @@ bool procurar_transicao(string cadeia, Automato& automato, Simulacao simulacao, 
     return false;
 }
 
-void verificar_aceitacao(Simulacao& simulacao, Automato& automato, string& cadeia){ //verifica se a cadeia esta completa, a pilha esta vazia e o estado atual eh estado final
-    //simulacao.palavra == cadeia
-    //simulacao.estado_atual tem q estar em automato.transicoes
-    //simulacao.pilha deve estar vazia
+void verificar_aceitacao(Simulacao& simulacao, Automato& automato, string& cadeia){
     bool palavra_confere = (simulacao.palavra == cadeia);
     bool estado_confere = find(automato.estados_finais.begin(), automato.estados_finais.end(), simulacao.estado_atual) != automato.estados_finais.end();
-    //find retorna um iterador caso encontre o argumento 3 entre begin e end
     bool pilha_confere = simulacao.pilha.empty();
     bool aceita = (palavra_confere && estado_confere && pilha_confere);
     aceita ? cout << "ACEITA\n" : cout << "REJEITADA\n";
 }
 
-void imprimir_passo(Simulacao& simulacao, string& cadeia){ //tem q ser chamada antes e dps da execucao do automato
+void imprimir_passo(Simulacao& simulacao, string& cadeia){
     cout << "fita: ";
     cout << simulacao.palavra;
     cout << "[" << simulacao.estado_atual << "]";
-    cout << cadeia.substr(simulacao.posicao_cadeia); //imprime apenas a parte da cadeia q ainda nao foi lida
+    cout << cadeia.substr(simulacao.posicao_cadeia);
     cout << " pilha: ";
-    for(int i = simulacao.pilha.size() -1; i >= 0; i--){ //ja q eh uma pilha, imprime de tras pra frente
+    for(int i = simulacao.pilha.size() -1; i >= 0; i--){
         cout << simulacao.pilha[i];
     }
     cout << endl;
 }
 
-void ler_arquivo_cadeia(string nome, Automato& automato){ //funcao p ler a entrada a ser testada, podendo ser varias linhas
+void ler_arquivo_cadeia(string nome, Automato& automato){
     string cadeia;
     ifstream arquivo(nome);
         if(!arquivo.is_open()){
@@ -79,7 +69,7 @@ void ler_arquivo_cadeia(string nome, Automato& automato){ //funcao p ler a entra
         Simulacao simulacao;
         Transicao transicao;
         imprimir_passo(simulacao, cadeia);
-        while(true){ //roda infinito ate n ter transicoes aceitaveis
+        while(true){
             if(!(procurar_transicao(cadeia, automato, simulacao, transicao))){
                 break;
             } else {
@@ -87,6 +77,6 @@ void ler_arquivo_cadeia(string nome, Automato& automato){ //funcao p ler a entra
                 imprimir_passo(simulacao, cadeia);
             }
         }
-        verificar_aceitacao(simulacao, automato, cadeia); // printa a resposta pra cada cadeia
+        verificar_aceitacao(simulacao, automato, cadeia);
     }
 }
