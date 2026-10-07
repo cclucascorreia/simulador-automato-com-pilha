@@ -40,8 +40,11 @@ Transicao extrair_transicao(string linha){
 
 void ler_arquivo_automato(string nome, Automato& automato){
     ifstream arquivo(nome);
-    if(!arquivo.is_open()){
+    while(!arquivo.is_open()){
         cout << "ERRO: o arquivo nao foi aberto." << endl;
+        cout << "Digite o nome do arquivo .txt com as informacoes do automato: ";
+        cin >> nome;
+        ler_arquivo_automato(nome, automato);
         return;
     }
     string linha;
