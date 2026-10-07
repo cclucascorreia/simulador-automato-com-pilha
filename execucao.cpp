@@ -17,8 +17,8 @@ void aplicar_transicao(Simulacao& simulacao, Transicao& transicao){
         simulacao.pilha.pop_back();
     }
     if(transicao.simbolo_empilhado != "@"){
-        for(auto x: transicao.simbolo_empilhado){
-            simulacao.pilha.push_back(string(1, x));
+        for(int i = (int)transicao.simbolo_empilhado.size() - 1; i >= 0; i--){
+            simulacao.pilha.push_back(string(1, transicao.simbolo_empilhado[i]));
         }
     }
 }
