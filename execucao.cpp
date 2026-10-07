@@ -1,4 +1,4 @@
-#include "leitura.cpp"
+#include "execucao.h"
 
 string topo_pilha(Simulacao& simulacao){ //funcao p retornar o topo da pilha //passa por referencia pra n criar copia desnecessaria
     if(simulacao.pilha.empty()){
@@ -23,7 +23,7 @@ void aplicar_transicao(Simulacao& simulacao, Transicao& transicao){
     }
 }
 
-bool procurar_transicao(string cadeia, Automato automato, Simulacao simulacao, Transicao& transicao){ //procura uma transicao aceitavel //true: achou e aplicou a transicao //false: flopou
+bool procurar_transicao(string cadeia, Automato& automato, Simulacao simulacao, Transicao& transicao){ //procura uma transicao aceitavel //true: achou e aplicou a transicao //false: flopou
     //dado o automato atual, procurar no vetor de transicoes por alguma que:
     //esteja em estado_atual;
     //leia cadeia[simulacao.posicao_cadeia];
@@ -44,7 +44,7 @@ bool procurar_transicao(string cadeia, Automato automato, Simulacao simulacao, T
     return false;
 }
 
-void verificar_aceitacao(Simulacao& simulacao, Automato automato, string& cadeia){ //verifica se a cadeia esta completa, a pilha esta vazia e o estado atual eh estado final
+void verificar_aceitacao(Simulacao& simulacao, Automato& automato, string& cadeia){ //verifica se a cadeia esta completa, a pilha esta vazia e o estado atual eh estado final
     //simulacao.palavra == cadeia
     //simulacao.estado_atual tem q estar em automato.transicoes
     //simulacao.pilha deve estar vazia

@@ -1,4 +1,4 @@
-#include "execucao.cpp"
+#include "execucao.h"
 
 int main(){
     string nome;
