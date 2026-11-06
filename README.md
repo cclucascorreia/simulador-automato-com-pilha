@@ -65,9 +65,11 @@ alfabeto_pilha = {X,Y}
 
 1.5.2 entrada.txt
 Um arquivo contendo as cadeias a serem testada pela simulação:
+```
 abcddd
 ccddd
 abababddd
+```
 
 O projeto tem 5 arquivos (main.cpp, execucao.cpp, execucao.h, leitura.cpp, leitura.h). Os .cpp precisam ser compilados juntos, e os .h são incluídos automaticamente. 
 
