@@ -1,6 +1,6 @@
-### Simulador de autômato com pilha determinístico em C++
+# Simulador de autômato com pilha determinístico em C++
 
-# Funcionalidades do programa
+## Funcionalidades do programa
 1.1 Estrutura de dados referente ao autômato
   struct Automato{
     int n;                             
