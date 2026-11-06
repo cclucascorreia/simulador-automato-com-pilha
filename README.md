@@ -42,6 +42,8 @@ Para utilizar esse software, o usuário deve ter dois arquivos texto preparados:
 
 1.5.1 automato.txt
 Um arquivo contendo as informações do autômato, conforme no exemplo:
+
+```
 Q=8
 F={q7}
 alfabeto_fita = {a,b,c,d}
@@ -59,6 +61,7 @@ alfabeto_pilha = {X,Y}
 (q5,d,X) = (q6,@)
 (q6,d,X) = (q6,@)
 (q6,@,$) = (q7,@)
+```
 
 1.5.2 entrada.txt
 Um arquivo contendo as cadeias a serem testada pela simulação:
