@@ -83,10 +83,13 @@ g++ main.cpp execucao.cpp leitura.cpp -o automato.exe
 g++ main.cpp execucao.cpp leitura.cpp -o automato
 ./automato
 
-1.5 Construção do software
+## Construção do software
 As operações de leitura de dados e organização nas structs são feitas na chamada da função ler_arquivo_automato().
+
 A leitura do arquivo de cadeias é feita pela função ler_arquivo_cadeia(), que chama as demais funções de simulação.
+
 O progresso do autômato é impresso a cada iteração, exibindo o estado atual, a posição sendo lida na cadeia e a pilha.
+
 As seguintes bibliotecas foram utilizadas:
 <iostream>
 Entrada e saída padrão no console: cout, cin e endl.
