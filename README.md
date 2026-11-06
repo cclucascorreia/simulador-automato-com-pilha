@@ -90,20 +90,6 @@ A leitura do arquivo de cadeias é feita pela função ler_arquivo_cadeia(), que
 
 O progresso do autômato é impresso a cada iteração, exibindo o estado atual, a posição sendo lida na cadeia e a pilha.
 
-As seguintes bibliotecas foram utilizadas:
-<iostream>
-Entrada e saída padrão no console: cout, cin e endl.
-<vector> 
-Aparece na pilha de simulação, nas listas do autômato, e no retorno de extrair_conteudo.
-<string>
-Fornece o tipo string e suas operações, como substr, find, size e stoi.
-<algorithm> 
-Utilizada na função de verificar aceitação, em find()
-<fstream> 
-Leitura e escrita de arquivos.
-<sstream> 
-Utilizada para separar o conteúdo entre chaves em itens, com getline().
-
 IDE utilizada: Visual Studio Code v1.143.1
 compilador utilizado: MinGW v13.1.0
 
