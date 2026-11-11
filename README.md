@@ -2,6 +2,7 @@
 
 ## Funcionalidades do programa
 1.1 Estrutura de dados referente ao autômato
+```
   struct Automato{
     int n;                             
     vector<string> estados_finais;      
@@ -9,8 +10,9 @@
     vector<string> alfabeto_pilha;
     vector<Transicao> transicoes;
   };
-
+```
 1.2 Estrutura de dados referente a transição
+```
   struct Transicao{
     string estado_origem;    
     string estado_destino;
@@ -18,15 +20,16 @@
     string simbolo_lido;   
     string simbolo_empilhado; 
   };
-
+```
 1.3 Estrutura de dados referente ao processo em cadeia em andamento
+```
   struct Simulacao{
     string estado_atual = "q0";
     string palavra = "";  
     int posicao_cadeia = 0;
     vector<string> pilha; 
   };
-
+```
 1.4 Funções
 
 bool procurar_transicao: procura uma transição válida para a configuração atual da simulação. retorna true se encontrou, false caso contrário.
