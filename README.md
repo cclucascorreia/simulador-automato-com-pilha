@@ -40,10 +40,10 @@ void verificar_aceitacao: verifica se a cadeia processada foi aceita pelo autôm
 
 string topo_pilha: função que retorna o símbolo no topo da pilha na simulação em andamento.
 
-1.5 Como usar
+1.5 Como usar  
 Para utilizar esse software, o usuário deve ter dois arquivos texto preparados:
 
-1.5.1 automato.txt
+1.5.1 automato.txt  
 Um arquivo contendo as informações do autômato, conforme no exemplo:
 
 ```
@@ -66,7 +66,7 @@ alfabeto_pilha = {X,Y}
 (q6,@,$) = (q7,@)
 ```
 
-1.5.2 entrada.txt
+1.5.2 entrada.txt  
 Um arquivo contendo as cadeias a serem testada pela simulação:
 ```
 abcddd
