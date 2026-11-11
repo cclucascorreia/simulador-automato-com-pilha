@@ -103,5 +103,5 @@ compilador utilizado: MinGW v13.1.0
 
 1.6 Referências
 
-CPPREFERENCE. C++ Reference. Disponível em: https://en.cppreference.com/. Acesso em: 24 out. 2026. 
+CPPREFERENCE. C++ Reference. Disponível em: https://en.cppreference.com/. Acesso em: 24 out. 2026.  
 SILVA, Rômulo César. Linguagens Livres de Contexto. Unioeste, jun. 2020. Apresentação de slides. 
