@@ -101,7 +101,6 @@ O progresso do autômato é impresso a cada iteração, exibindo o estado atual,
 IDE utilizada: Visual Studio Code v1.143.1
 compilador utilizado: MinGW v13.1.0
 
-1.6 Referências
-
+## Referências
 CPPREFERENCE. C++ Reference. Disponível em: https://en.cppreference.com/. Acesso em: 24 out. 2026.  
 SILVA, Rômulo César. Linguagens Livres de Contexto. Unioeste, jun. 2020. Apresentação de slides. 
